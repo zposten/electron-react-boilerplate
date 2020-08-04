@@ -1,11 +1,11 @@
 {
-  "name": "pbi-tips-desktop",
+  "name": "electron-with-react",
   "version": "0.0.1",
   "private": true,
   "main": "electron/main.js",
-  "description": "A desktop application for easily adding external tools to PowerBI Desktop",
-  "productName": "PbiTipsDesktop",
-  "license": "UNLICENSED",
+  "description": "A minimal project setup for creating a react app inside of an electron app",
+  "productName": "MyAmazingElectronApp",
+  "license": "MIT",
   "homepage": "./",
   "scripts": {
     "start": "npm-run-all --parallel start:react start:electron",
