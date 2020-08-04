@@ -9,16 +9,16 @@
   "homepage": "./",
   "scripts": {
     "start": "npm-run-all --parallel start-react start-electron",
-    "start-react": "cross-env BROWSER=none react-scripts start",
-    "start-electron": "cross-env ELECTRON_START_URL=http://localhost:3000 electron .",
-    "build-react": "react-scripts build",
+    "start:react": "cross-env BROWSER=none react-scripts start",
+    "start:electron": "cross-env ELECTRON_START_URL=http://localhost:3000 electron .",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf dist",
-    "build-exe": "node bld/build-exe",
-    "build-admin-exe": "node bld/give-exe-admin-rights",
-    "build-installer": "node bld/build-installer",
-    "installer": "npm-run-all --serial clean build-exe build-admin-exe build-installer"
+    "clean:installer": "rimraf dist",
+    "build:react": "react-scripts build",
+    "build:exe": "node bld/build-exe",
+    "build:admin-exe": "node bld/give-exe-admin-rights",
+    "build:installer": "node bld/build-installer",
+    "installer": "npm-run-all --serial clean:installer build:exe build:admin-exe build:installer"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
