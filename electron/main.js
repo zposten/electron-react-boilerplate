@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+const url = require('url')
 
 // const {
 //   handleInstallationEvents,
@@ -42,8 +43,15 @@ function createWindow() {
     // },
   })
 
-  // and load the index.html of the app.
-  mainWindow.loadURL('http://localhost:3000')
+  let startUrl =
+    process.env.ELECTRON_START_URL ||
+    url.format({
+      pathname: path.join(__dirname, '..', 'build', 'index.html'),
+      protocol: 'file:',
+      slashes: true,
+    })
+
+  mainWindow.loadURL(startUrl)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
