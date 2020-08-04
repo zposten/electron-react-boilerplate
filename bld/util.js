@@ -12,19 +12,22 @@ function success(text) {
 
 async function getPaths() {
   let pkg = await fs.readJson(fromRoot('package.json'))
+  let outDir = fromRoot('install')
 
   // Note this CANNOT have dashes in it, or the installer will fail to build
   // See: https://github.com/electron/windows-installer/issues/187
   let appName = pkg.productName
 
-  let exeDir = fromRoot('dist', 'exe')
+  let exeDir = path.join(outDir, 'exe')
   let appDir = path.join(exeDir, appName)
 
   let exeNameWithoutExt = appName
   let exeNameWithExt = appName + '.exe'
   let exePath = path.join(appDir, exeNameWithExt)
 
-  let installerDir = fromRoot('dist', 'installer')
+  let tmpManifestPath = path.join(outDir, 'manifest.xml')
+
+  let installerDir = path.join(outDir, 'installer')
 
   return {
     exeDir,
@@ -34,6 +37,7 @@ async function getPaths() {
     exeNameWithoutExt,
     exePath,
     installerDir,
+    tmpManifestPath,
   }
 }
 

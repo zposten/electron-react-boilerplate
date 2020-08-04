@@ -18,15 +18,14 @@ const mt =
 giveExeAdminRights()
 
 async function giveExeAdminRights() {
-  let { exePath } = await getPaths()
-  let manifestPath = fromRoot('dist', 'manifest.xml')
+  let { exePath, tmpManifestPath } = await getPaths()
 
   try {
     await ensureExeExists(exePath)
-    await extractManifest(exePath, manifestPath)
-    await changeExecutionLevel(manifestPath)
-    await reInsertManifest(exePath, manifestPath)
-    await deleteManifestFile(manifestPath)
+    await extractManifest(exePath, tmpManifestPath)
+    await changeExecutionLevel(tmpManifestPath)
+    await reInsertManifest(exePath, tmpManifestPath)
+    await deleteManifestFile(tmpManifestPath)
   } catch (e) {
     console.log(chalk.red(e.message))
     process.exit(1)
